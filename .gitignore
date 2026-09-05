@@ -4,3 +4,9 @@
 DESIGN.md
 ui-brief.json
 .DS_Store
+animation/.hyperframes/
+animation/renders/
+animation/node_modules/
+assets/gsap.min.js
+animation/snapshots/
+animation/BRIEF.md

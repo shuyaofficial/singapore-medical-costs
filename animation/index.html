@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=600, height=450">
+<title>Singapore bay — six second hero loop</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+:root{--paper:#fcfbf9;--ink:#193b3b;--sea:#216c70;--muted:#506362;--line:#d8e1dc;--wash:#edf3ef;--private:#6b668c;--white:#fff;--land:#cddbc6;--water:#dcecea;--roof:#a4b8b1;--glass:#afccce;--side:#8ba8a6;--sand:#e5e5d4}
+*{box-sizing:border-box}body{margin:0}#singapore-bay-root{position:relative;width:600px;height:450px;overflow:hidden}.clip{position:absolute;inset:0}.scene-background{position:absolute;inset:0;background:var(--paper)}svg{display:block;position:relative;width:600px;height:450px}
+</style>
+</head>
+<body>
+<div id="singapore-bay-root" data-composition-id="singapore-bay" data-start="0" data-duration="6" data-width="600" data-height="450">
+<section id="bay-scene" class="clip" data-start="0" data-duration="6" data-track-index="0" aria-label="シンガポール湾岸の静かな風景">
+<div class="scene-background"></div>
+<svg viewBox="0 0 480 390" width="600" height="450" role="img" aria-label="シンガポールの湾岸をイメージした立体的な街並みイラスト">
+<g id="singapore-bay-cloud-near" fill="var(--white)"><path d="M53 75c-18-18 6-37 22-25 5-29 46-25 48 0 23-8 37 19 19 29H61z"/></g><g id="singapore-bay-cloud-far" fill="var(--white)"><path d="M312 41c-12-17 10-30 20-18 8-24 39-17 38 3 18-9 34 16 16 25h-67z"/></g>
+<path d="M20 259 247 142 459 250 228 365z" fill="var(--water)"/><path d="M20 236 247 119 459 227 228 342z" fill="var(--land)"/><path d="M20 236v17l208 105v-16z" fill="var(--side)"/><path d="m228 342 231-115v17L228 358z" fill="var(--roof)"/>
+<path d="m40 250 60-29 118 60 114-58 101 50-205 103z" fill="var(--water)"/><path d="m37 238 46-23 135 69 114-58 104 52" fill="none" stroke="var(--sand)" stroke-width="8"/>
+<g fill="var(--glass)" stroke="var(--paper)" stroke-width="2"><path d="m112 118 34-17 24 13v115l-34 17-24-13z"/><path d="m158 94 34-17 24 13v115l-34 17-24-13z"/><path d="m204 70 34-17 24 13v115l-34 17-24-13z"/></g><g fill="var(--side)"><path d="m146 101 24 13v115l-24-12z"/><path d="m192 77 24 13v115l-24-12z"/><path d="m238 53 24 13v115l-24-12z"/></g><path d="m92 113 149-78 40 19-148 82z" fill="var(--roof)"/><path d="m92 113 41 23 148-82-7 13-140 80-35-19z" fill="var(--white)"/>
+<g fill="none" stroke="var(--paper)" stroke-width="2" opacity=".7"><path d="m117 144 28-14m-28 29 28-14m-28 30 28-14m-28 29 28-14m18-56 28-14m-28 29 28-14m-28 30 28-14m-28 29 28-14m18-56 28-14m-28 29 28-14m-28 30 28-14m-28 29 28-14"/></g>
+<g><path d="m317 139 30-15 32 16v69l-30 16-32-16z" fill="var(--glass)"/><path d="m349 155 30-15v69l-30 16z" fill="var(--side)"/><path d="m317 139 30-15 32 16-30 15z" fill="var(--white)"/><path d="m369 175 24-12 29 14v40l-25 13-28-15z" fill="var(--roof)"/><path d="m369 175 24-12 29 14-25 13z" fill="var(--paper)"/></g>
+<g stroke="var(--side)" stroke-width="4"><path d="M263 237v-27m28 10v-30m-49 62v-23"/></g><g fill="var(--sea)"><ellipse cx="263" cy="207" rx="13" ry="8"/><ellipse cx="291" cy="187" rx="16" ry="10"/><ellipse cx="242" cy="226" rx="12" ry="7"/></g><g id="singapore-bay-boat"><path d="m166 300 30-15" fill="none" stroke="var(--white)" stroke-width="2" opacity=".65"/><path d="m175 292 34-17 22 11-34 17z" fill="var(--white)"/><path d="m180 295 17 8 28-14-3 6-25 13-15-8z" fill="var(--sea)"/><path d="m190 285 14-7 11 6-14 7z" fill="var(--glass)"/><path d="m190 285v-5l11 6v5z" fill="var(--roof)"/><path d="m190 280 14-7 11 6-14 7z" fill="var(--white)"/></g>
+</svg>
+</section>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+const timeline = gsap.timeline({ paused: true });
+// Finite, symmetric motion: the same visual state at both loop boundaries.
+timeline.fromTo('#singapore-bay-cloud-near', { x: 0 }, { x: 18, duration: 3, ease: 'sine.inOut', repeat: 1, yoyo: true }, 0);
+timeline.fromTo('#singapore-bay-cloud-far', { x: 0 }, { x: -14, duration: 3, ease: 'sine.inOut', repeat: 1, yoyo: true }, 0);
+// A small oval cruise stays entirely inside the illustrated bay.
+timeline.fromTo('#singapore-bay-boat', { x: 0 }, { x: 36, duration: 3, ease: 'sine.inOut', repeat: 1, yoyo: true }, 0);
+timeline.fromTo('#singapore-bay-boat', { y: 0 }, { y: -7, duration: 1.5, ease: 'sine.inOut' }, 0);
+timeline.to('#singapore-bay-boat', { y: 0, duration: 1.5, ease: 'sine.inOut' }, 1.5);
+timeline.to('#singapore-bay-boat', { y: 7, duration: 1.5, ease: 'sine.inOut' }, 3);
+timeline.to('#singapore-bay-boat', { y: 0, duration: 1.5, ease: 'sine.inOut' }, 4.5);
+window.__timelines['singapore-bay'] = timeline;
+</script>
+</body>
+</html>
